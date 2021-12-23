@@ -6,9 +6,9 @@
   <thead>
     <tr>
       <th>Car ID</th>
-      <th>Brand ID</th>
-      <th>Color ID</th>
-      <th>Model</th>
+      <th>Brand Name</th>
+      <th>Color Name</th>
+      <th>Model</th> 
       <th>Açıklama</th>
       <th>Günlük Fiyat</th>
     </tr>
@@ -16,8 +16,8 @@
   <tbody>
     <tr *ngFor="let car of cars">
       <td>{{ car.carId }}</td>
-      <td>{{ car.brandId }}</td>
-      <td>{{ car.colorId }}</td>
+      <td>{{ car.brandName }}</td>
+      <td>{{ car.colorName }}</td>
       <td>{{ car.modelYear }}</td>
       <td>{{ car.description }}</td>
       <td>{{ car.dailyPrice }}</td>
