@@ -6,12 +6,14 @@
     <thead>
       <tr>
         <th>Brand Name</th>
+        <th>Color</th>
         <th>Customer Name</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let rental of rentals">
         <td>{{ rental.brandName }}</td>
+        <td>{{ rental.colorName }}</td>
         <td>{{ rental.firstName}} {{rental.lastName}}</td>
       </tr>
     </tbody>
