@@ -2,19 +2,19 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
-import { Brand } from '../models/brand';
+import { Color } from '../models/color';
 import { ListResponseModel } from '../models/listResponseModel';
 
 @Injectable({
   providedIn: 'root',
 })
-export class BrandService {
+export class ColorService {
 
-  apiUrl = 'https://localhost:15139/api/brands/getall';
+  apiUrl = 'https://localhost:15139/api/colors/getall';
   
   constructor(private httpClient: HttpClient) {}
 
-  getBrands():Observable<ListResponseModel<Brand>> {
-    return this.httpClient.get<ListResponseModel<Brand>>(this.apiUrl);
+  getColors():Observable<ListResponseModel<Color>> {
+    return this.httpClient.get<ListResponseModel<Color>>(this.apiUrl);
   }
 }
