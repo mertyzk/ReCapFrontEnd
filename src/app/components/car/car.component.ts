@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
 import { CarService } from 'src/app/services/car.service';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-car',
@@ -12,22 +13,22 @@ import { CarService } from 'src/app/services/car.service';
 export class CarComponent implements OnInit {
   cars: Car[] = [];
   dataLoaded = false;
-  filterText="";
+  filterText = '';
 
   constructor(
     private carService: CarService,
     private activatedRoute: ActivatedRoute,
-    private toastrService:ToastrService
+    private toastrService: ToastrService,
+    private cartService: CartService
   ) {}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
-      if (params["brandId"]) {
-        this.getCarsByBrand(params["brandId"]);
-      } else if (params["colorId"]){
-        this.getCarsByColor(params["colorId"]);
-      }
-      else{
+      if (params['brandId']) {
+        this.getCarsByBrand(params['brandId']);
+      } else if (params['colorId']) {
+        this.getCarsByColor(params['colorId']);
+      } else {
         this.getCars();
       }
     });
@@ -54,7 +55,8 @@ export class CarComponent implements OnInit {
     });
   }
 
-  addToCart(car:Car){
-    this.toastrService.success("Kiralama listesine eklendi",car.brandName)
+  addToCart(car: Car) {
+    this.toastrService.success('Kiralama listesine eklendi', car.brandName);
+    this.cartService.addToCart(car);
   }
 }
