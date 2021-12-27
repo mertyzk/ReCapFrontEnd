@@ -13,22 +13,21 @@ import { RentalService } from 'src/app/services/rental.service';
 })
 export class CarImageComponent implements OnInit {
   carImages: CarImage[] = [];
-  message:string = "";
-  success:boolean = false;
+  dataLoaded = false;
+  message: string = '';
+  success: boolean = false;
 
-  constructor(
-    private activatedRouter: ActivatedRoute,
-    private carImageService: CarImageService,
-    private carService:      CarService,
-    private rentalService:   RentalService,
-  ) {}
+  constructor(private carImageService: CarImageService) {}
 
   ngOnInit(): void {
-    this.activatedRouter.params.subscribe(params => {
-      if(params["carId"]){
-        this.getCarImagesByCarId(params["carId"]);
-      }
-    })
+    this.getImages();
+  }
+
+  getImages() {
+    this.carImageService.getImages().subscribe((response) => {
+      this.carImages = response.data;
+      this.dataLoaded = true;
+    });
   }
 
   getCarImagesByCarId(id: number) {
@@ -37,8 +36,8 @@ export class CarImageComponent implements OnInit {
     });
   }
 
-  getImageSource(carImage:CarImage):string{
-    let url:string = "https://localhost:15139/" + carImage.imagePath;
+  getImageSource(carImage: CarImage): string {
+    let url: string = 'https://localhost:15139/Uploads/Images/DefaultImage.jpg' ;
     return url;
   }
 }
