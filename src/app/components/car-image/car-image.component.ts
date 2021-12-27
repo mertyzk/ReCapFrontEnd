@@ -37,7 +37,7 @@ export class CarImageComponent implements OnInit {
   }
 
   getImageSource(carImage: CarImage): string {
-    let url: string = 'https://localhost:15139/Uploads/Images/DefaultImage.jpg' ;
+    let url: string = 'https://localhost:15139/Uploads/Images/DefaultImage.jpg' ; 
     return url;
   }
 }
